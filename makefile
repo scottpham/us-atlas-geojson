@@ -1,5 +1,10 @@
-.PHONY: county_fips state_fips
+.PHONY: county_fips state_fips us-atlas reproduce clean
 
+
+reproduce: clean county_fips state_fips us-atlas
+
+clean: 
+	rm -rf data && mkdir data && rm -rf us-atlas/node_modules
 
 us-atlas: 
 	cd us-atlas && npm install && cp us/*geojson.json ../data/
